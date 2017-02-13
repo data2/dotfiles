@@ -33,6 +33,9 @@ for d in $DIR/*; do
 	    fi 
 	    echo "Linking $entry"
 	    ln -s $entry "${HOME}/.$(basename $entry)"
+	    if [ -e $entry/install.sh ]; then
+		    $entry/install.sh
+	    fi
     done
 done
 
