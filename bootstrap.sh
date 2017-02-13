@@ -24,9 +24,14 @@ for d in $DIR/*; do
 	    TARGET="${HOME}/.$(basename $entry)"
 	    backup_old $TARGET
 	    if [ -L $TARGET ]; then
-		    # skip existing links. 
+		if [ -e $TARGET ]; then
+		    # skip existing, valid links. 
 		    continue
-	    fi
+		fi
+		echo "Removing old link for $TARGET"
+		rm $TARGET
+	    fi 
+	    echo "Linking $entry"
 	    ln -s $entry "${HOME}/.$(basename $entry)"
     done
 done
