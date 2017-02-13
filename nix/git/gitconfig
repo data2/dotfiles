@@ -5,7 +5,9 @@
 [color]
 	ui = true
 [core]
+    editor = vim
 	excludesfile = ~/.gitignore
+    autocrlf = input
 [credential]
 	helper = store
 [filter "lfs"]
@@ -29,7 +31,8 @@
 [user]
 	name = Jonas Fietz
 	email = info@jonasfietz.de
-
+[merge]
+	tools = vimdiff
 [alias]
 	co-master = !git checkout master && git submodule foreach git checkout master
 	lol = log --oneline --graph
@@ -38,3 +41,10 @@
 	sync-subs = !git pull && git remote prune origin && git submodule foreach git pull && git submodule foreach git remote prune origin
 	rmrbranch = push origin --delete  # <Branch-name> supplied by user
 	rmrprune = remote prune origin
+	co = checkout
+	br = branch
+	ci = commit
+	st = status
+	last = log -1 HEAD
+[credential]
+	helper = cache
