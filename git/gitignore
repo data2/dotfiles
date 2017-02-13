@@ -2,6 +2,7 @@
 
 # Editor backup files
 *~
+.*.swp
 
 # Obvious Mac OS/X stuff
 .DS_Store
