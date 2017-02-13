@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/bash -x
 
 # Set up soft links from files to their destination (in home directory)
 
