@@ -1,9 +1,0 @@
-# Global GIT ignore file
-
-# Editor backup files
-*~
-
-# Obvious Mac OS/X stuff
-.DS_Store
-.Trashes
-.Spotlight-V100
