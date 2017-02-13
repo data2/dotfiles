@@ -35,6 +35,7 @@ import XMonad.Hooks.ICCCMFocus
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import Data.Ratio ((%))
+import Graphics.X11.ExtraTypes.XF86
 
 {-
   Xmonad configuration variables. These settings control some of the
@@ -210,8 +211,11 @@ myKeyBindings =
     , ((myModMask .|. mod1Mask, xK_space), spawn "synapse")
     , ((myModMask, xK_u), focusUrgent)
     , ((0, 0x1008FF12), spawn "amixer -q set Master toggle")
-    , ((0, 0x1008FF11), spawn "amixer -q set Master 10%-")
-    , ((0, 0x1008FF13), spawn "amixer -q set Master 10%+")
+    , ((0, 0x1008FF11), spawn "amixer -q set Master 5%-")
+    , ((0, 0x1008FF13), spawn "amixer -q set Master 5%+")
+    , ((noModMask, xF86XK_MonBrightnessUp), spawn "xbacklight +9")
+    , ((noModMask, xF86XK_MonBrightnessDown), spawn "xbacklight -9")
+
   ]
 
 
