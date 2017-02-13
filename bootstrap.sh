@@ -34,6 +34,7 @@ done
 # delete old / stale links
 for x in ~/.[!.]*; do 
 	if [ -L "$x"  ] && ! [ -e "$x"  ]; then 
+		echo "removing $x"
 		rm -- "$x"; 
 	fi; 
 done
