@@ -47,6 +47,11 @@ xrandr | grep 'VGA-1 connected' | ifne xrandr --output VGA-1 --auto --left-of LV
 # to the left of the primary screen.
 xrandr | grep 'DP-1 connected' | ifne xrandr --output DP-1 --auto --left-of LVDS-1
 
+# If this is the EPFL desktop, then put DVI to left of DisplayPort
+if [ $(hostname) == "desktop-epfl" ]; then
+	xrandr | grep 'DVI-0 connected' | ifne xrandr --output DVI-0 --auto --left-of  DisplayPort-0
+fi
+
 
 #
 # LOAD SCREEN BACKGROUNDS
@@ -69,7 +74,7 @@ nitrogen --restore &
 # Line by line, the options used by default below mean:
 # - icons should be aligned with the "East" or right side of the tray
 # - the width of the tray should be 5 icons wide by one icon tall, and it 
-#   should be located 0 pixels from the right of the screen (-0) and 0 pixels
+#   should be located 0 pixels from the right of the screen (-0)() and 0 pixels
 #   from the top of the screen (+0).
 # - By setting our maximum geometry to the same thing, the tray will not grow.
 # - The background color of the tray should be black.
