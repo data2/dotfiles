@@ -147,7 +147,7 @@ let g:neosnippet#snippets_directory='~/.vim/plugged/vim-snippets/snippets'
 """"""""""""""""""""""""""""""""""""""""""""""""
 "" auto-pairs.vim config
 """"""""""""""""""""""""""""""""""""""""""""""""
-let g:AutoPairsFlyMode = 1
+let g:AutoPairsFlyMode = 0
 
 """"""""""""""""""""""""""""""""""""""""""""""""
 "" Molokai Colorscheme config
