@@ -20,8 +20,6 @@
 	abbrevCommit = true
 	decorate = short
 	date = local
-[pull]
-	ff = only
 [push]
 	default = current
 [rerere]
