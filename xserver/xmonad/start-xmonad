@@ -93,8 +93,8 @@ nitrogen --restore &
 #
 stalonetray \
   --icon-gravity E \
-  --geometry 5x1-1200+0 \
-  --max-geometry 5x1-1200+0 \
+  --geometry 5x1-$WIDTH_RIGHT_MONITOR+0 \
+  --max-geometry 5x1-$WIDTH_RIGHT_MONITOR+0 \
   --background '#000000' \
   --skip-taskbar \
   --icon-size 23 \

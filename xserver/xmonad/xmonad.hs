@@ -336,7 +336,7 @@ myKeys = myKeyBindings ++
 -}
 
 main = do
-  xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc -x 0"
+  xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc -x 1"
   xmonad $ withUrgencyHook NoUrgencyHook $ ewmh defaultConfig {
     focusedBorderColor = myFocusedBorderColor
   , normalBorderColor = myNormalBorderColor
