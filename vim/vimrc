@@ -56,7 +56,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
     \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+	\ }
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
@@ -176,6 +176,7 @@ let g:go_list_type = "quickfix"
 let g:go_auto_type_info = 1
 let g:go_auto_sameids = 1
 
+autocmd FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 
 
 
@@ -183,4 +184,15 @@ let g:go_auto_sameids = 1
 "" language specific configuration
 """"""""""""""""""""""""""""""""""""""""""""""""
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 
+
+
+""""""""""""""""""""""""""""""""""""""""""""
+"" vim "optimizations"
+"""
+
+"" quicker escape
+inoremap jj <ESC>
+
+"" open new split and edit it
+nnoremap <Leader>w <C-w>v<C-w>l
 

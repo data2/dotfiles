@@ -3,3 +3,7 @@ if [ -e /usr/share/terminfo/x/xterm-256color ]; then
 else
         export TERM='xterm-color'
 fi
+
+function gocd  { 
+	cd `go list -f '{{.Dir}}' $1`  
+}

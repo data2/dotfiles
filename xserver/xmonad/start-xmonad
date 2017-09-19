@@ -37,11 +37,11 @@ xcompmgr -n &
 # connected screens and find out what names you should use to refer to them.
 
 # Activate primary screen 
-#xrandr --output LVDS-1 --auto --primary
+xrandr --output VGA-1 --auto --primary
 
 # If we find that a screen is connected via VGA, activate it and position it
 # to the left of the primary screen.
-#xrandr | grep 'VGA-1 connected' | ifne xrandr --output VGA-1 --auto --left-of LVDS-1
+xrandr | grep 'VGA-1 connected' | ifne xrandr --output VGA-1 --auto --left-of DP-2
 
 # If we find that a screen is connected via DVI, activate it and position it
 # to the left of the primary screen.
@@ -54,7 +54,7 @@ WIDTH_RIGHT_MONITOR=0
 # If this is the EPFL desktop, then put DVI to left of DisplayPort
 if [ $(hostname) == "desktop-epfl" ]; then
 	xrandr | grep 'DVI-0 connected' | ifne xrandr --output DVI-0 --auto --left-of  DisplayPort-0
-	xrandr | grep 'DisplayPort-0 connected' | ifne xrandr --output DisplayPort-0 --rotate left
+	xrandr | grep 'DP-2 connected' | ifne xrandr --output DP-2 --rotate left
 	WIDTH_RIGHT_MONITOR=1200
 fi
 

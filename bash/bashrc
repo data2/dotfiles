@@ -1,0 +1,10 @@
+export GOPATH="/home/fietz/go"
+
+if [ -e /usr/share/terminfo/x/xterm+256color ]; then
+        export TERM='xterm-256color'
+else
+        export TERM='xterm-color'
+fi
+export CDPATH=$GOPATH/src/github.com:$GOPATH/src/code.google.com/p:$GOPATH/src/github.com/epfl-dcsl/
+export GEM_HOME=$HOME/local/gems
+export PATH="/home/fietz/local/gems/bin/:$PATH"
