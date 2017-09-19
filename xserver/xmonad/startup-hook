@@ -17,6 +17,10 @@ if [ -z "$(pgrep empathy)" ] ; then
     empathy -h -n &
 fi
 
+if [-s "$(pgrep blueman-applet)"] ; then
+	blueman-applet &
+fi
+
 # Remmina remote desktop connection client (-i: start hidden)
 if [ -z "$(pgrep remmina)" ] ; then
     remmina -i &
@@ -67,8 +71,45 @@ cat /dev/null | ssh-add &
 # change depending on what devices you have plugged into USB. We extract the
 # id of the device from the output of xinput, then use it to disable the
 # device
-#TOUCHPAD_ID=`xinput | grep 'Synaptics TouchPad' | cut -f 2 | cut -f 2 -d =`
+TOUCHPAD_ID=`xinput | grep 'Synaptics TouchPad' | cut -f 2 | cut -f 2 -d =`
 #xinput set-prop $TOUCHPAD_ID "Device Enabled" 0
 
 # natural scrolling
-xinput set-prop 11 280 -70 -70
+xinput set-prop $TOUCHPAD_ID 281 -70 -70
+
+
+# STARTUP ICON TRAY
+#
+
+# We are using stalonetray to create a small icon tray at the
+# top right of the screen. You are likely to want to tweak the
+# size of the icons and the width of the tray based upon the
+# size of your screen and your xmobar configuration. The goal is
+# to make stalonetray look like it is part of xmobar.
+# 
+# Line by line, the options used by default below mean:
+# - icons should be aligned with the "East" or right side of the tray
+# - the width of the tray should be 5 icons wide by one icon tall, and it 
+#   should be located 0 pixels from the right of the screen (-0)() and 0 pixels
+#   from the top of the screen (+0).
+# - By setting our maximum geometry to the same thing, the tray will not grow.
+# - The background color of the tray should be black.
+# - This program should not show up in any taskbar.
+# - Icons should be set to size "24".
+# - Kludges argument of "force_icons_size" forces all icons to really, truly 
+#   be the size we set.
+# - window-strut "none" means windows are allowed to cover the tray. In
+#   other words, trust xmonad to handle this part.
+#
+stalonetray \
+  --icon-gravity E \
+  --geometry 5x1-$WIDTH_RIGHT_MONITOR+0 \
+  --max-geometry 5x1-$WIDTH_RIGHT_MONITOR+0 \
+  --background '#000000' \
+  --skip-taskbar \
+  --icon-size 41 \
+  --kludges force_icons_size \
+  --window-strut none \
+&
+
+setxkbmap us  -option 'compose:ralt'

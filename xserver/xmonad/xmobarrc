@@ -45,14 +45,32 @@ Config {
     -- Battery information. This is likely to require some customization
     -- based upon your specific hardware. Or, for a desktop you may want
     -- to just remove this section entirely.
-    Run Battery [
-      "-t", "<acstatus>: <left>%", 
-      "--", 
-      "-O", "AC",
-      "-o", "Bat",
-      "-h", "green",
-      "-l", "red"
-    ] 10,
+    -- Run BatteryP ["BAT1"] [
+--       "-t", "<acstatus><watts> (<left>%)", 
+--       "--", 
+--       "-O", "AC",
+--       "-o", "Bat",
+--       "-h", "green",
+--       "-p", "green",
+--      "-l", "red",
+-- "-L", "1"
+--   
+--     ] 10,
+
+	Run BatteryP ["BAT0","BAT1"]
+		["-t", "<acstatus> -<left>%(<watts>W) - <timeleft> h",
+	"-L", "10", 
+	"-H", "80", 
+	"-p", "3",
+	"--", 
+	"-O", "<fc=green>AC</fc>",
+	"-o", "<fc=blue>Bat</fc>",
+	"-i", "Idle",
+	"-L", "-15", 
+	"-H", "-5",
+	"-l", "red", 
+	"-m", "blue", 
+	"-h", "green"] 1,
 
     -- To get volume information, we run a custom bash script.
     -- This is because the built-in volume support in xmobar is disabled
