@@ -5,4 +5,6 @@ if [ -e /usr/share/terminfo/x/xterm+256color ]; then
 else
         export TERM='xterm-color'
 fi
-export CDPATH=$GOPATH/src/github.com:$GOPATH/src/code.google.com/p
+export CDPATH=$GOPATH/src/github.com:$GOPATH/src/code.google.com/p:$GOPATH/src/github.com/epfl-dcsl/
+export GEM_HOME=$HOME/local/gems
+export PATH="/home/fietz/local/gems/bin/:$PATH"
