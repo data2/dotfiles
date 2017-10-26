@@ -34,7 +34,9 @@ Plug 'fatih/molokai'
 Plug 'AndrewRadev/splitjoin.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'crusoexia/vim-monokai'
-
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
+Plug 'Shougo/vimshell.vim'
+Plug 'sebdah/vim-delve'
 call plug#end()
 
 

@@ -36,6 +36,11 @@ if [ -z "$(pgrep system-config-printer-applet)" ] ; then
     system-config-printer-applet &
 fi
 
+if [ -z "$(pgrep xautolock)" ] ; then
+	xautolock -time 10 -locker slock &
+fi
+
+
 #
 # APPLICATION LAUNCHER
 #
@@ -75,7 +80,7 @@ TOUCHPAD_ID=`xinput | grep 'Synaptics TouchPad' | cut -f 2 | cut -f 2 -d =`
 #xinput set-prop $TOUCHPAD_ID "Device Enabled" 0
 
 # natural scrolling
-xinput set-prop $TOUCHPAD_ID 281 -70 -70
+xinput set-prop $TOUCHPAD_ID 283 -70 -70
 
 
 # STARTUP ICON TRAY
