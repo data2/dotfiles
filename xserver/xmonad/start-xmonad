@@ -48,7 +48,7 @@ xrandr | grep 'VGA-1 connected' | ifne xrandr --output VGA-1 --auto --left-of DP
 #xrandr | grep 'DP-1 connected' | ifne xrandr --output DP-1 --auto --left-of LVDS-1
 
 
-// no right monitor as default 
+# no right monitor as default 
 WIDTH_RIGHT_MONITOR=0
 
 # If this is the EPFL desktop, then put DVI to left of DisplayPort
