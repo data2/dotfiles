@@ -37,6 +37,8 @@ Plug 'crusoexia/vim-monokai'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/vimshell.vim'
 Plug 'sebdah/vim-delve'
+Plug  'c3m3gyanesh/p4-syntax-highlighter-collection', {'rtp': 'vim'} 
+
 call plug#end()
 
 

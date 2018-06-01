@@ -208,14 +208,13 @@ myKeyBindings =
     , ((myModMask, xK_a), sendMessage MirrorShrink)
     , ((myModMask, xK_z), sendMessage MirrorExpand)
     , ((myModMask, xK_p), spawn "synapse")
-    , ((myModMask, xK_l), spawn "slock")
     , ((myModMask .|. mod1Mask, xK_space), spawn "synapse")
     , ((myModMask, xK_u), focusUrgent)
     , ((0, 0x1008FF12), spawn "amixer -q set Master toggle;  amixer -q set Speaker toggle;")
     , ((0, 0x1008FF11), spawn "amixer -q set Master 5%-")
     , ((0, 0x1008FF13), spawn "amixer -q set Master 5%+")
-    , ((noModMask, xF86XK_MonBrightnessUp), spawn "xbacklight +9")
-    , ((noModMask, xF86XK_MonBrightnessDown), spawn "xbacklight -9")
+    , ((noModMask, xF86XK_MonBrightnessUp), spawn "xbacklight +3")
+    , ((noModMask, xF86XK_MonBrightnessDown), spawn "xbacklight -3")
     ,((myModMask .|. shiftMask, xK_l), spawn "gnome-screensaver-command -l")
 
 
