@@ -17,7 +17,7 @@ if [ -z "$(pgrep empathy)" ] ; then
     empathy -h -n &
 fi
 
-if [-s "$(pgrep blueman-applet)"] ; then
+if [ -z "$(pgrep blueman-applet)"] ; then
 	blueman-applet &
 fi
 

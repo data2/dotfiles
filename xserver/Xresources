@@ -1,4 +1,4 @@
 xterm*saveLines: 4096
 xterm*faceName: Liberation Mono:size=10:antialias=false
 xterm*font: 7x13
-
+xterm*termName: xterm-256color
