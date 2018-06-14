@@ -339,8 +339,8 @@ myKeys = myKeyBindings ++
 -}
 
 main = do
-  xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc -x 1"
-  xmonad $ withUrgencyHook NoUrgencyHook $ ewmh defaultConfig {
+  xmproc <- spawnPipe "xmobar ~/.xmonad/xmobarrc -x 0"
+  xmonad $ withUrgencyHook NoUrgencyHook $ docks $ ewmh defaultConfig {
     focusedBorderColor = myFocusedBorderColor
   , normalBorderColor = myNormalBorderColor
   , terminal = myTerminal
@@ -355,7 +355,7 @@ main = do
       spawn "~/.xmonad/startup-hook"
   , manageHook = manageHook defaultConfig
       <+> composeAll myManagementHooks
-      <+> manageDocks
+--       <+> manageDocks
   , logHook = takeTopFocus <+> dynamicLogWithPP xmobarPP {
       ppOutput = hPutStrLn xmproc
       , ppTitle = xmobarColor myTitleColor "" . shorten myTitleLength

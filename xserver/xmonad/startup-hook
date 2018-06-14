@@ -18,7 +18,9 @@ if [ -z "$(pgrep empathy)" ] ; then
 fi
 
 if [ -z "$(pgrep blueman-applet)"] ; then
-	blueman-applet &
+	if command -v blueman-applet; then
+		blueman-applet &
+	fi
 fi
 
 # Remmina remote desktop connection client (-i: start hidden)
@@ -106,13 +108,20 @@ xinput set-prop $TOUCHPAD_ID 305 -70 -70
 # - window-strut "none" means windows are allowed to cover the tray. In
 #   other words, trust xmonad to handle this part.
 #
+# no right monitor as default 
+
+WIDTH_RIGHT_MONITOR=0
+if [ $(hostname) == "desktop-epfl" ]; then
+	WIDTH_RIGHT_MONITOR=1200
+fi
+
 stalonetray \
   --icon-gravity E \
   --geometry 5x1-$WIDTH_RIGHT_MONITOR+0 \
-  --max-geometry 5x1-$WIDTH_RIGHT_MONITOR+0 \
-  --background '#000000' \
+  --max-geometry 6x1-$WIDTH_RIGHT_MONITOR+0 \
+  -bg black \
   --skip-taskbar \
-  --icon-size 41 \
+  --icon-size 24 \
   --kludges force_icons_size \
   --window-strut none \
 &

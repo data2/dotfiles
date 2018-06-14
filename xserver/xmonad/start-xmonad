@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 # 
 # xmonad startup script. Intended to be run from an xsession configuration
 # to run xmonad and some associated programs.
@@ -14,14 +14,6 @@
 # gtk-based applications
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
-# Load X resources (fixes some font issues)
-xrdb -merge ~/.Xresources
-
-# Start compositing to support transparency. You can omit this
-# if you prefer not to use any transparency, but it is likely to cause
-# ugly black fringing with some programs such as synapse that expect
-# transparency support.
-xcompmgr -n &
 
 
 #
@@ -37,11 +29,11 @@ xcompmgr -n &
 # connected screens and find out what names you should use to refer to them.
 
 # Activate primary screen 
-xrandr --output VGA-1 --auto --primary
 
 # If we find that a screen is connected via VGA, activate it and position it
 # to the left of the primary screen.
 xrandr | grep 'VGA-1 connected' | ifne xrandr --output VGA-1 --auto --left-of DP-2
+
 
 # If we find that a screen is connected via DVI, activate it and position it
 # to the left of the primary screen.
@@ -53,11 +45,19 @@ WIDTH_RIGHT_MONITOR=0
 
 # If this is the EPFL desktop, then put DVI to left of DisplayPort
 if [ $(hostname) == "desktop-epfl" ]; then
-	xrandr | grep 'DVI-0 connected' | ifne xrandr --output DVI-0 --auto --left-of  DisplayPort-0
+#	xrandr | grep 'DVI-0 connected' | ifne xrandr --output DVI-0 --auto --left-of  DP-2
 	xrandr | grep 'DP-2 connected' | ifne xrandr --output DP-2 --rotate left
 	WIDTH_RIGHT_MONITOR=1200
 fi
 
+# Load X resources (fixes some font issues)
+xrdb -merge ~/.Xresources
+
+# Start compositing to support transparency. You can omit this
+# if you prefer not to use any transparency, but it is likely to cause
+# ugly black fringing with some programs such as synapse that expect
+# transparency support.
+xcompmgr -n &
 
 #
 # LOAD SCREEN BACKGROUNDS
