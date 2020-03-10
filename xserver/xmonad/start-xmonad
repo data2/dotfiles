@@ -50,6 +50,29 @@ if [ $(hostname) == "desktop-epfl" ]; then
 	WIDTH_RIGHT_MONITOR=1200
 fi
 
+DPI=168
+# if an argument has been passed in
+if [ ! -z $DPI ]; then
+
+    # create a new temporary '.Xresources' file with only the DPI setting
+    TMPFILE=$(mktemp)
+    echo "! Fonts {{{
+         Xft.dpi: $DPI
+	 ! These might also be useful depending on your monitor and personal preference:
+	 Xft.autohint: 0
+	 Xft.lcdfilter:  lcddefault
+	 Xft.hintstyle:  hintfull
+	 Xft.hinting: 1
+	 Xft.antialias: 1
+	 Xft.rgba: rgb
+    ! }}}" > "$TMPFILE"
+
+    # merge the temporary .Xresources file on top of the already loaded config
+    xrdb -merge "$TMPFILE"
+
+    #cleanup
+    rm -f "$TMPFILE"
+fi
 # Load X resources (fixes some font issues)
 xrdb -merge ~/.Xresources
 
@@ -57,7 +80,7 @@ xrdb -merge ~/.Xresources
 # if you prefer not to use any transparency, but it is likely to cause
 # ugly black fringing with some programs such as synapse that expect
 # transparency support.
-xcompmgr -n &
+#xcompmgr -n &
 
 #
 # LOAD SCREEN BACKGROUNDS
