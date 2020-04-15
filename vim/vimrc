@@ -37,7 +37,8 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/vimshell.vim'
 Plug 'sebdah/vim-delve'
 Plug  'c3m3gyanesh/p4-syntax-highlighter-collection', {'rtp': 'vim'} 
-
+Plug 'tell-k/vim-autopep8'
+Plug 'elzr/vim-json'
 call plug#end()
 
 
@@ -202,6 +203,11 @@ inoremap jj <ESC>
 "" open new split and edit it
 nnoremap <Leader>w <C-w>v<C-w>l
 
+"" automatically format python files on save"
+"""let g:autopep8_disable_show_diff=1
+"""let g:autopep8_on_save = 1
+"""let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checkers = ['']
 "" Remeber last position"
 
 
@@ -209,3 +215,6 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+
+set foldmethod=syntax
+set foldlevelstart=99
