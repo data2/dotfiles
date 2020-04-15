@@ -80,10 +80,12 @@ cat /dev/null | ssh-add &
 # device
 TOUCHPAD_ID=`xinput | grep 'Synaptics TouchPad' | cut -f 2 | cut -f 2 -d =`
 #xinput set-prop $TOUCHPAD_ID "Device Enabled" 0
-NATURAL_SCROLLING_ID=`xinput list-props | grep 'Natural Scrolling Enabled' | cut -f 2 | cut -f 2 -d =`
-
+NATURAL_SCROLLING_ID=`xinput list-props $TOUCHPAD_ID | grep 'Natural Scrolling Enabled' | cut -f 2 | cut -f 2 -d =`
+NATURAL_SCROLLING_ID="libinput Natural Scrolling Enabled" 
 # natural scrolling
-xinput set-prop $TOUCHPAD_ID $NATURAL_SCROLLING_ID 1
+xinput set-prop $TOUCHPAD_ID "$NATURAL_SCROLLING_ID" 1
+xinput set-prop $TOUCHPAD_ID "libinput Tapping Enabled" 1
+xinput set-prop $TOUCHPAD_ID "libinput Tapping Enabled" 1
 
 
 # STARTUP ICON TRAY

@@ -211,11 +211,11 @@ myKeyBindings =
     , ((myModMask .|. mod1Mask, xK_l), spawn "slock")
     , ((myModMask .|. mod1Mask, xK_space), spawn "synapse")
     , ((myModMask, xK_u), focusUrgent)
-    , ((0, 0x1008FF12), spawn "amixer -q set Master toggle;  amixer -q set Speaker toggle;")
-    , ((0, 0x1008FF11), spawn "amixer -q set Master 5%-")
-    , ((0, 0x1008FF13), spawn "amixer -q set Master 5%+")
-    , ((noModMask, xF86XK_MonBrightnessUp), spawn "xbacklight +3")
-    , ((noModMask, xF86XK_MonBrightnessDown), spawn "xbacklight -3")
+    , ((noModMask, xF86XK_AudioMute), spawn "amixer -q set Master toggle;  amixer -q set Speaker toggle;")
+    , ((noModMask, xF86XK_AudioLowerVolume), spawn "amixer -q set Master 5%-")
+    , ((noModMask, xF86XK_AudioRaiseVolume), spawn "amixer -q set Master 5%+")
+    , ((noModMask, xF86XK_MonBrightnessUp), spawn "sudo brightnessctl s +3%")
+    , ((noModMask, xF86XK_MonBrightnessDown), spawn "sudo brightnessctl s 3-%")
     ,((myModMask .|. shiftMask, xK_l), spawn "gnome-screensaver-command -l")
 
 
