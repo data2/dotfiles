@@ -33,6 +33,7 @@ for d in $DIR/*; do
 	    fi 
 	    echo "Linking $entry"
 	    ln -s $entry "${HOME}/.$(basename $entry)"
+	    print "WILL FAIL ON GENTOO"
 	    if [ -e $entry/install.sh ]; then
 		    $entry/install.sh
 	    fi
