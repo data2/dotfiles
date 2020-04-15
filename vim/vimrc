@@ -38,7 +38,7 @@ Plug 'Shougo/vimshell.vim'
 Plug 'sebdah/vim-delve'
 Plug  'c3m3gyanesh/p4-syntax-highlighter-collection', {'rtp': 'vim'} 
 Plug 'tell-k/vim-autopep8'
-
+Plug 'elzr/vim-json'
 call plug#end()
 
 
@@ -215,3 +215,6 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
+
+set foldmethod=syntax
+set foldlevelstart=99
