@@ -1,0 +1,2 @@
+source ~/.gdb/dashboard
+source ~/.gdb/tacgdb.py

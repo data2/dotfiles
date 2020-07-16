@@ -10,3 +10,11 @@ export GEM_HOME=$HOME/local/gems
 export PATH="/home/fietz/local/gems/bin/:$PATH"
 export PATH="$GOPATH/bin/:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
+
+gdb-tmux() {
+    local id="$(tmux split-pane -hPF "#D" "tail -f /dev/null")"
+    tmux last-pane
+    local tty="$(tmux display-message -p -t "$id" '#{pane_tty}')"
+    gdb -ex "dashboard -output $tty" "$@"
+    tmux kill-pane -t "$id"
+}
