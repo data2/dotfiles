@@ -10,7 +10,12 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')           
+if executable('git')
+   call plug#begin('~/.vim/plugged')           
+else
+   silent! call plug#begin('~/.vim/plugged')           
+endif
+
 " let Vundle manage Vundle, required
 Plug 'VundleVim/Vundle.vim'
 Plug 'mileszs/ack.vim'
@@ -36,7 +41,7 @@ Plug 'crusoexia/vim-monokai'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/vimshell.vim'
 Plug 'sebdah/vim-delve'
-Plug  'c3m3gyanesh/p4-syntax-highlighter-collection', {'rtp': 'vim'} 
+Plug 'c3m3gyanesh/p4-syntax-highlighter-collection', {'rtp': 'vim'} 
 Plug 'tell-k/vim-autopep8'
 Plug 'elzr/vim-json'
 call plug#end()
@@ -220,10 +225,11 @@ set foldmethod=syntax
 set foldlevelstart=99
 
 if executable('git')
-   let g:gitgutter_highlight_lines = 1  " Turn on gitgutter highlighting
+    let g:gitgutter_highlight_lines = 1  " Turn on gitgutter highlighting
 else
     let g:gitgutter_git_executable = '/bin/true'
     let g:gitgutter_enabled = 0
 endif
 
 set colorcolumn=85
+let g:syntastic_check_on_wq = 0
