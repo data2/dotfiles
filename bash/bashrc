@@ -26,3 +26,5 @@ if [ -f `which powerline-daemon` ]; then
   POWERLINE_BASH_SELECT=1
   . /usr/share/powerline/integrations/powerline.sh
 fi
+
+alias cgrep="egrep --exclude-dir boottacc --exclude-dir TaccBuildBoot --exclude *.gold -R"
