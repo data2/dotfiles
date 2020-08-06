@@ -118,6 +118,10 @@ if [ $(hostname) == "desktop-epfl" ]; then
 	WIDTH_RIGHT_MONITOR=1200
 fi
 
+if [ $(hostname) == "jonas-work-thinkpad" ]; then
+	WIDTH_RIGHT_MONITOR=1920
+fi
+
 stalonetray \
   --icon-gravity E \
   --geometry 5x1-$WIDTH_RIGHT_MONITOR+0 \
