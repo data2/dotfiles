@@ -124,7 +124,7 @@ stalonetray \
   --max-geometry 6x1-$WIDTH_RIGHT_MONITOR+0 \
   -bg black \
   --skip-taskbar \
-  --icon-size 24 \
+  --icon-size 12 \
   --kludges force_icons_size \
   --window-strut none \
 &
