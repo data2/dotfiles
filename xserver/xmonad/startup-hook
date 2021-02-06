@@ -119,7 +119,7 @@ if [ $(hostname) == "desktop-epfl" ]; then
 fi
 
 if [ $(hostname) == "jonas-work-thinkpad" ]; then
-	WIDTH_RIGHT_MONITOR=1920
+	WIDTH_RIGHT_MONITOR=0
 fi
 
 stalonetray \

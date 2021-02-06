@@ -28,3 +28,5 @@ if [ -f `which powerline-daemon` ]; then
 fi
 
 alias cgrep="egrep --exclude-dir boottacc --exclude-dir TaccBuildBoot --exclude *.gold -R"
+
+PATH="/home/jonas/.local/bin:$PATH"

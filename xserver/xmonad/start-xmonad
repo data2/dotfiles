@@ -47,7 +47,7 @@ fi
 
 if [ $(hostname) == "jonas-work-thinkpad" ]; then
    DPI=96
-   xrandr | grep 'HDMI-0 connected' | xrandr --dpi $DPI  --output eDP-1-1 --auto --right-of HDMI-0 --output HDMI-0 --auto
+   xrandr | grep 'HDMI-0 connected' | xrandr --dpi $DPI  --output eDP-1-1 --auto --left-of HDMI-0 --output HDMI-0 --auto
 fi
 
 # if an argument has been passed in
