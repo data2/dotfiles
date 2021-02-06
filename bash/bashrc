@@ -1,4 +1,7 @@
-export GOPATH="/home/data/go"
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
 
 #if [ -e /usr/share/terminfo/x/xterm+256color ]; then
         export TERM='xterm-256color'
@@ -24,9 +27,14 @@ if [ -f `which powerline-daemon` ]; then
   powerline-daemon -q
   POWERLINE_BASH_CONTINUATION=1
   POWERLINE_BASH_SELECT=1
-  . /usr/share/powerline/integrations/powerline.sh
+  . /usr/share/powerline/bindings/bash/powerline.sh
 fi
 
-alias cgrep="egrep --exclude-dir boottacc --exclude-dir TaccBuildBoot --exclude *.gold -R"
+function cgrep(){
+  egrep -n --color --exclude-dir={boottacc,TaccBuildBoot,TaccAttic,TaccInternalDocs,TaccDocs,TaccExamples} --exclude \*.gold --exclude \*bundle.js.map -R "$@"
+}
 
-PATH="/home/jonas/.local/bin:$PATH"
+alias blame="p4 annotate -ciu"
+
+export TACCCACHE_DIR="/tmp/tacccache"
+export POWERLINE_PROMPT="user_info scm python_venv ruby hostname cwd"
