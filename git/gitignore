@@ -1,10 +1,27 @@
-# Global GIT ignore file
-
-# Editor backup files
-*~
-.*.swp
-
-# Obvious Mac OS/X stuff
-.DS_Store
-.Trashes
-.Spotlight-V100
+.vscode/
+*/.oconfig
+*/Makefile.in
+*/*/Makefile.in
+*/*/*/Makefile.in
+*/Makefile.pkg.inc
+*/Makefile.tacc
+*/aclocal.m4
+*/autogen/
+*/autom4te.cache/
+*/config.h.in
+*/configure
+*/debconfig/
+*/version.m4
+**/*Version.tac
+*.pyc
+*.py3testing.inc
+TestFwkPython/autom4te.cache/requests
+boottacc/autom4te.cache/requests
+boottacc/tacc/Makefile.am
+tacc/autom4te.cache/output.0
+tacc/autom4te.cache/output.1
+tacc/autom4te.cache/requests
+tacc/autom4te.cache/traces.0
+tacc/autom4te.cache/traces.1
+**/Requirements.yaml
+TestCollections/NProcs

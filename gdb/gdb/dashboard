@@ -2274,6 +2274,12 @@ set python print-stack full
 
 python Dashboard.start()
 
+dashboard source -style height 25
+dashboard registers
+dashboard assembly
+
+dashboard -style syntax_highlighting 'monokai'
+
 # File variables ---------------------------------------------------------------
 
 # vim: filetype=python
