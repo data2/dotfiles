@@ -30,30 +30,24 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # Activate primary screen 
 
-# If we find that a screen is connected via VGA, activate it and position it
-# to the left of the primary screen.
-xrandr | grep 'VGA-1 connected' | ifne xrandr --output VGA-1 --auto --left-of DP-2
-
-
 # If we find that a screen is connected via DVI, activate it and position it
 # to the left of the primary screen.
 #xrandr | grep 'DP-1 connected' | ifne xrandr --output DP-1 --auto --left-of LVDS-1
 
-
-DPI=183
-
 # If this is the EPFL desktop, then put DVI to left of DisplayPort
-if [ $(hostname) == "desktop-epfl" ]; then
-#	xrandr | grep 'DVI-0 connected' | ifne xrandr --output DVI-0 --auto --left-of  DP-2
-	xrandr | grep 'DP-2 connected' | ifne xrandr --output DP-2 --rotate left
+if [ $(hostname) == "desktop" ]; then
+   DPI=183
+   xrandr | grep 'DP-2 connected' | ifne xrandr --output DP-2 --rotate left
 fi
 
 if [ $(hostname) == "jonas-thinkpad" ]; then
-	xrandr | grep 'HDMI-2 connected' | xrandr --dpi 286  --output eDP-1 --auto --left-of HDMI-2 --output HDMI-2 --auto --scale 1.5x1.5 
-	#ifne xrandr --dpi $DPI  --output eDP-1 --auto --left-of --output HDMI-2 --auto --scale 1.6x1.6 #--pos 3840x0 --panning 3840x2160+3840+0
-	#--fb 9984x3456 
-	#xrandr | grep 'HDMI-2 connected' | ifne xrandr --output eDP-1 --auto --left-of  HDMI-2 --scale 1.6x1.6
-	#xrandr | grep 'HDMI-2 connected' | ifne xrandr --output DP-2 --rotate left
+   DPI=286
+   xrandr | grep 'HDMI-2 connected' | xrandr --dpi 286  --output eDP-1 --auto --left-of HDMI-2 --output HDMI-2 --auto --scale 1.5x1.5 
+fi
+
+if [ $(hostname) == "jonas-work-thinkpad" ]; then
+   DPI=96
+   xrandr | grep 'HDMI-0 connected' | xrandr --dpi $DPI  --output eDP-1-1 --auto --left-of HDMI-0 --output HDMI-0 --auto
 fi
 
 # if an argument has been passed in

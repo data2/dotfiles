@@ -7,7 +7,7 @@
 [core]
     editor = vim
 	excludesfile = ~/.gitignore
-    autocrlf = input
+    #autocrlf = input
 [credential]
 	helper = store
 [filter "lfs"]
@@ -45,4 +45,8 @@
 	st = status
 	last = log -1 HEAD
 [credential]
-	helper = cache
+   helper = cache
+
+
+[alias]
+    p4 = !~/bin/git-p4.py

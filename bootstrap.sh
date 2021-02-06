@@ -19,6 +19,7 @@ function backup_old {
 for d in $DIR/*; do
     # iterate only over directories
     [ ! -d $d ] && continue
+    [ $d -eq "config" ] && continue
 
     for entry in $d/*; do
 	    TARGET="${HOME}/.$(basename $entry)"
@@ -33,6 +34,31 @@ for d in $DIR/*; do
 	    fi 
 	    echo "Linking $entry"
 	    ln -s $entry "${HOME}/.$(basename $entry)"
+	    print "WILL FAIL ON GENTOO"
+	    if [ -e $entry/install.sh ]; then
+		    $entry/install.sh
+	    fi
+    done
+done
+
+for d in $DIR/config/*; do
+    # iterate only over directories
+    [ ! -d $d ] && continue
+
+    for entry in $d/*; do
+	    TARGET="${HOME}/.$(basename $entry)"
+	    backup_old $TARGET
+	    if [ -L $TARGET ]; then
+		if [ -e $TARGET ]; then
+		    # skip existing, valid links. 
+		    continue
+		fi
+		echo "Removing old link for $TARGET"
+		rm $TARGET
+	    fi 
+	    echo "Linking $entry"
+	    ln -s $entry "${HOME}/.$(basename $entry)"
+	    print "WILL FAIL ON GENTOO"
 	    if [ -e $entry/install.sh ]; then
 		    $entry/install.sh
 	    fi

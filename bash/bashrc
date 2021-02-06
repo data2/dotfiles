@@ -1,4 +1,7 @@
-export GOPATH="/home/data/go"
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
 
 #if [ -e /usr/share/terminfo/x/xterm+256color ]; then
         export TERM='xterm-256color'
@@ -10,6 +13,28 @@ export GEM_HOME=$HOME/local/gems
 export PATH="/home/fietz/local/gems/bin/:$PATH"
 export PATH="$GOPATH/bin/:$PATH"
 export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-export PATH="$HOME/local/gems/bin:$PATH"
+
+gdb-tmux() {
+    local id="$(tmux split-pane -hPF "#D" "tail -f /dev/null")"
+    tmux last-pane
+    local tty="$(tmux display-message -p -t "$id" '#{pane_tty}')"
+    gdb -ex "dashboard -output $tty" "$@"
+    tmux kill-pane -t "$id"
+}
+
+# Powerline
+if [ -f `which powerline-daemon` ]; then
+  powerline-daemon -q
+  POWERLINE_BASH_CONTINUATION=1
+  POWERLINE_BASH_SELECT=1
+  . /usr/share/powerline/bindings/bash/powerline.sh
+fi
+
+function cgrep(){
+  egrep -n --color --exclude-dir={boottacc,TaccBuildBoot,TaccAttic,TaccInternalDocs,TaccDocs,TaccExamples} --exclude \*.gold --exclude \*bundle.js.map -R "$@"
+}
+
+alias blame="p4 annotate -ciu"
+
+export TACCCACHE_DIR="/tmp/tacccache"
+export POWERLINE_PROMPT="user_info scm python_venv ruby hostname cwd"

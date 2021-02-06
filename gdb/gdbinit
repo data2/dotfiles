@@ -1,0 +1,5 @@
+#source ~/.gdb/dashboard
+source ~/.gdb/tacgdb.py
+
+set print object on
+set print static-members off
