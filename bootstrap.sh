@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/bash 
 
 # This script assumes none of the dotfiles that are to be replaced are 
 # symlinks
@@ -19,7 +19,7 @@ function backup_old {
 for d in $DIR/*; do
     # iterate only over directories
     [ ! -d $d ] && continue
-    [ $d -eq "config" ] && continue
+    [ $d = "$DIR/config" ] && continue
 
     for entry in $d/*; do
 	    TARGET="${HOME}/.$(basename $entry)"
@@ -41,12 +41,12 @@ for d in $DIR/*; do
     done
 done
 
-for d in $DIR/config/*; do
+for entry in $DIR/config/*; do
     # iterate only over directories
     [ ! -d $d ] && continue
+    echo $d
 
-    for entry in $d/*; do
-	    TARGET="${HOME}/.$(basename $entry)"
+	    TARGET="${HOME}/.config/$(basename $entry)"
 	    backup_old $TARGET
 	    if [ -L $TARGET ]; then
 		if [ -e $TARGET ]; then
@@ -57,12 +57,7 @@ for d in $DIR/config/*; do
 		rm $TARGET
 	    fi 
 	    echo "Linking $entry"
-	    ln -s $entry "${HOME}/.$(basename $entry)"
-	    print "WILL FAIL ON GENTOO"
-	    if [ -e $entry/install.sh ]; then
-		    $entry/install.sh
-	    fi
-    done
+	    ln -s $entry "$TARGET"
 done
 
 # delete old / stale links
